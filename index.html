@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	*{
+		padding:0;
+		margin:0;
+	}
+	.container{
+		width: 1600px;
+		margin:0 auto;
+	}
+/*		.row1{
+			display: flex;
+		}
+		.row1 img{
+			width: 1600px;
+		}*/
+		.gal{
+			overflow:hidden;
+			width: 500px;
+			height: 500px;			
+			position: relative;
+		}
+		.row2{
+			display: flex;
+			position: absolute;
+			top: 0;
+			left:0px;
+			transition:all 1s;
+		}
+		.row2 img{
+			width: 500px;
+			height: 500px;
+		}
+		.clean{
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+<!-- 	<div class="row1">
+		<img src="rasm1.jpg" id="glrasm">
+	</div> -->
+	<div class="gal">
+		<div class="row2">
+			<img src="p1.png" class="pick">
+			<img src="p2.png" class="pick">
+			<img src="p3.png" class="pick">
+			<img src="p4.png" class="pick">
+			<img src="p5.png" class="pick">
+		</div>
+	</div>
+	<button onclick="slide1(0)" data-slider="0" class="sliderbtn">1</button>
+	<button onclick="slide1(1)" data-slider="1" class="sliderbtn">2</button>
+	<button onclick="slide1(2)" data-slider="2" class="sliderbtn">3</button>
+	<button onclick="slide1(3)" data-slider="3" class="sliderbtn">4</button>
+	<button onclick="slide1(4)" data-slider="4" class="sliderbtn">5</button>
+	<button onclick="chapga()">chapga</button>
+	<button onclick="ongga()">ongga</button>
+</div>
+
+
+<script type="text/javascript">
+	let son = 0
+	let b = 0
+	let block = document.querySelector('.row2')
+	function slide1(raqam){
+		b=0
+		son = raqam
+		if(son>=5){
+			son=0
+		}
+		if(son<0){
+			son=3
+		}
+		block.style.left = -son*500+'px'
+		console.log(son)
+	}
+	function vaqt(){
+		b++
+		setTimeout("vaqt()",1000)
+		if(b==5){
+			ongga()
+		}
+	}
+	function chapga(){
+		son--
+		slide1(son)
+	}
+	function ongga(){
+		son++
+		slide1(son)
+	}
+	vaqt()
+</script>
+</body>
+</html>
